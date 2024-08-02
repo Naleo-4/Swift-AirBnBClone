@@ -12,7 +12,7 @@ struct ListingItemView: View {
     var body: some View {
         VStack(spacing: 10){
             //image
-            ListingImageCarouselView()
+            ListingImageCarouselView(listing: listing)
                 .frame(height: 320)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
             
@@ -27,7 +27,7 @@ struct ListingItemView: View {
                     Text("Duration")
                         .foregroundStyle(.gray)
                     HStack(spacing: 4){
-                        Text("Prices")
+                        Text("$\(listing.pricePerNight)")
                             .fontWeight(.semibold)
                         Text("/night")
                     }
@@ -38,7 +38,7 @@ struct ListingItemView: View {
                 //rating
                 HStack(spacing:2){
                     Image(systemName: "star.fill")
-                    Text("Rating")
+                    Text("\(listing.rating)")
                 }
             }
             .font(.footnote)
@@ -49,5 +49,5 @@ struct ListingItemView: View {
 }
 
 #Preview {
-    ListingItemView(listing: DeveloperPreview.instance.listings)
+    ListingItemView(listing: DeveloperPreview.instance.listings[0])
 }
